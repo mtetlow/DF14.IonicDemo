@@ -1,0 +1,140 @@
+.bar.bar-header,.bar.bar-footer{
+	background-color: #065D96;
+	border-color: #065D96;
+	background-image: none;
+}
+
+.bar.bar-header .title{
+	text-transform:uppercase;
+}
+
+.refresh-button{
+	height: 20px;
+	display: block;
+	margin-top: 6px;
+	margin-right: 6px;
+}
+
+.refresh-button:before{
+	font-size:16px;
+}
+
+.list-group-item.thin-list-group-item{
+	padding: 2px 15px;
+}
+
+.list-group-item-left-detail{
+	float: left;
+	width: 32px;
+	height: 32px;
+	-webkit-border-radius: 32px !important;
+	-moz-border-radius: 32px !important;
+	border-radius: 32px !important;
+	background-color: red;
+}
+
+.userImage{
+	-webkit-border-radius: 44px !important;
+	-moz-border-radius: 44px !important;
+	border-radius: 44px !important;
+}
+
+.group:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.countSpan{
+	display:block;
+	margin-top: 7px;
+	width: 32px;
+	text-shadow: none;
+	text-align: center;
+}
+
+.list-name-label{
+	margin-top: 7px;
+	margin-left: 6px;
+}
+
+.overdue-deadline{
+	color: red;
+}
+
+.clear{
+	clear:both;
+}
+
+.fullwidth{
+	width: 100%;
+}
+
+.list-item-thumb-info-container{
+	/*width: -moz-calc(100% - 32px);
+    width: -webkit-calc(100% - 32px);
+    width: calc(100% - 32px);*/
+    width: 100%;
+    padding-left: 38px;
+}
+
+.list-item-double-thumb-info-container{
+	/*width: -moz-calc(100% - 32px);
+    width: -webkit-calc(100% - 32px);
+    width: calc(100% - 32px);*/
+    width: 100%;
+    padding-left: 64px;
+}
+
+.list-item-subtext{
+	font-size:11px;
+	color: #555555;
+}
+
+.userImage-sm, .task-complete-checkbox{
+	-webkit-border-radius: 32px !important;
+	-moz-border-radius: 32px !important;
+	border-radius: 32px !important;	
+	position: absolute !important;
+	top: 50%;
+	margin-top: -16px;
+}
+
+.userImage-with-checkbox{
+	margin-left: 28px;
+}
+
+.userImage-sm.glyphicons, .task-complete-checkbox{
+	width:32px;
+	height:32px;
+	padding-left: 0 !important;
+	
+}
+
+.userImage-sm.glyphicons:before, .task-complete-checkbox:before{
+	color: #555555 !important;
+}
+.task-complete-checkbox-with-user-img{
+	width:26px !important;
+}
+
+.loading{
+	background-color:transparent !important;
+}
+
+.spin:before{
+	-webkit-animation: spin 2s infinite linear;
+	-moz-animation: spin 2s infinite linear;
+	-o-animation: spin 2s infinite linear;
+	animation: spin 2s infinite linear;
+	display:inline-block;
+	font-size: 28px;
+}
+
+.show-more-chevron{
+	position: absolute;
+	right: 4px;
+	top:50%;
+	margin-top: -7px;
+	color: #647687 !important;
+}

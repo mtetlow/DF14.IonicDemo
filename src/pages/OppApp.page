@@ -1,0 +1,115 @@
+<apex:page docType="html-5.0" standardStylesheets="false" showHeader="false" sidebar="false" controller="oppAppController" applyHtmlTag="false" applyBodyTag="false">
+	<html>
+	  <head>
+	    <meta charset="utf-8"/>
+	    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width"/>
+	    <title>Opportunity App Sample</title>
+
+	    <!-- <link href="lib/ionic/css/ionic.css" rel="stylesheet"> -->
+	    <link href="{!URLFOR($Resource.oppAppResources, 'oppApp/lib/ionic/css/ionic.css')}" rel="stylesheet" />
+	    <link href="{!URLFOR($Resource.oppAppResources, 'bootstrap-sf1/css/bootstrap.css')}" rel="stylesheet" />
+	    <link href="{!URLFOR($Resource.oppAppResources, 'oppApp/css/style.css')}" rel="stylesheet" />
+	    <link href="{!URLFOR($Resource.oppAppResources, 'glyphicons/css/glyphicons.css')}" rel="stylesheet" />
+
+	    <script src="{!URLFOR($Resource.oppAppResources, 'oppApp/lib/ionic/js/ionic.bundle.min.js')}"></script>
+	    <script src="{!URLFOR($Resource.oppAppResources, 'oppApp/js/app.js')}"></script>
+	    <script type='text/javascript' src="//wurfl.io/wurfl.js"></script>
+
+	  </head>
+	  <body ng-app="oppApp" ng-controller="oppAppCtrl">
+		<ion-nav-bar class="nav-title-slide-ios7 bar-positive">
+			<ion-nav-back-button class="button-icon ion-arrow-left-c">
+			</ion-nav-back-button>
+		</ion-nav-bar>
+		<ion-nav-view animation="slide-left-right">
+
+		</ion-nav-view>
+		<ion-footer-bar align-title="left" class="bar-assertive">
+			<div class="buttons">
+				<div class="buttons" ng-click="addOpp()">
+					<div class="group">
+					<button type="button" class="pull-left btn btn-lg btn-link" style="color:white;padding-top:5px;">Add Opportunity</button>
+					</div>
+				</div>
+			</div>
+		</ion-footer-bar>
+	  </body>
+
+	  <!-- Get vars from the controller -->
+	  <script>
+		  var favoriteOpps=JSON.parse("{!JSENCODE(favoriteOppsJSON)}");
+		  var currentUserId = "{!JSENCODE(currentUserId)}"
+	  </script>
+
+	  <script type="text/ng-template" id="dashboard.html">
+	  	<ion-view title="Opportunity Dashboard">
+        <ion-content>
+        	<ion-nav-buttons side="right">
+		      <span ng-click="reloadPage()"  class="refresh-button s1utility s1utility-refresh"></span>
+		    </ion-nav-buttons>
+	    	<div class="list-group">
+              <a class="list-group-item" href='#expiringopps'>
+              	Opportunities Expiring Soon	
+              	<span class="s1utility s1utility-chevronright show-more-chevron"></span>
+	          </a>
+
+              <a href="#accounts/{{currentUserId}}" class="list-group-item">
+              	My Accounts
+              	<span class="s1utility s1utility-chevronright show-more-chevron"></span>
+              </a>
+
+			</div>
+
+			<div class="panel panel-default">
+		        <div class="panel-heading">
+		          <h4 class="panel-title">Favorite Opportunities</h4>
+		        </div>
+		        <div class="list-group list-group-flush">
+		          <div class="list-group-item" ng-repeat="favoriteOpp in favoriteOpps" ng-click="navigateToSObject('{{favoriteOpp.Id}}','chatter');">
+    					{{favoriteOpp.Name}}
+						<span class="s1utility s1utility-chevronright show-more-chevron"></span> 
+		          </li>
+		        </ul>
+		      </div>
+		</ion-content>
+		</ion-view>
+	    </script>
+
+	    <script type="text/ng-template" id="accounts.html">
+	  	<ion-view title="Accounts">
+        <ion-content>
+        	<ion-nav-buttons side="right">
+		      <span ng-click="reloadPage()"  class="refresh-button s1utility s1utility-refresh"></span>
+		    </ion-nav-buttons>
+	    	<div class="list-group">
+				<a class="list-group-item" ng-repeat="account in constants['accountsForUser']" href="#accountopps/{{account.Id}}"> 
+					{{account.Name}}
+					<span class="s1utility s1utility-chevronright show-more-chevron"></span>
+				</a>
+			</div>
+		</ion-content>
+		</ion-view>
+	    </script>
+
+	    <script type="text/ng-template" id="oppslist.html">
+	  	<ion-view title="{{pageTitle}}">
+        <ion-content>
+        	<ion-nav-buttons side="right">
+		      <span ng-click="reloadPage()"  class="refresh-button s1utility s1utility-refresh"></span>
+		    </ion-nav-buttons>
+	    	<div class="list-group">
+				<div class="list-group-item" ng-repeat="opp in oppArr" ng-click="navigateToSObject('{{opp.opportunity.Id}}','detail');"> 
+					<span class="glyphicons-icon check favorite-opp-toggle pull-left" ng-class="(opp.isFavorite) ? 'check' :'unchecked'" ng-click="$event.stopPropagation();favoriteOpp(opp);"></span>
+					{{opp.opportunity.Name}}
+					<br ng-if="opp.parsedCloseDate != ''"/>
+					{{opp.parsedCloseDate}}
+					<span class="s1utility s1utility-chevronright show-more-chevron"></span>
+				</div>
+			</div>
+		</ion-content>
+		</ion-view>
+	    </script>
+
+	</html>
+
+</apex:page>
