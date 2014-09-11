@@ -4,7 +4,7 @@ var oppApp = angular.module('oppApp', ['ionic', 'ngAnimate']);
 oppApp.controller('oppAppCtrl', function ($scope, $ionicLoading, ToggleFavoriteOpp, GetMyFavoriteOpps) {
   $scope.favoriteOpps = favoriteOpps;
   $scope.currentUserId = currentUserId;
-  $scope.constants = {test: 'test'};
+  $scope.constants = {};
   $scope.navigateToSObject=function(id, view){
     if(typeof(sforce)!='undefined' && typeof(sforce.one) != 'undefined'){
       sforce.one.navigateToSObject(id, view);

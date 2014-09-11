@@ -5,7 +5,6 @@
 	    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width"/>
 	    <title>Opportunity App Sample</title>
 
-	    <!-- <link href="lib/ionic/css/ionic.css" rel="stylesheet"> -->
 	    <link href="{!URLFOR($Resource.oppAppResources, 'oppApp/lib/ionic/css/ionic.css')}" rel="stylesheet" />
 	    <link href="{!URLFOR($Resource.oppAppResources, 'bootstrap-sf1/css/bootstrap.css')}" rel="stylesheet" />
 	    <link href="{!URLFOR($Resource.oppAppResources, 'oppApp/css/style.css')}" rel="stylesheet" />
@@ -17,13 +16,16 @@
 
 	  </head>
 	  <body ng-app="oppApp" ng-controller="oppAppCtrl">
+		<!-- Header Bar -->
 		<ion-nav-bar class="nav-title-slide-ios7 bar-positive">
 			<ion-nav-back-button class="button-icon ion-arrow-left-c">
 			</ion-nav-back-button>
 		</ion-nav-bar>
+		<!-- Main view -->
 		<ion-nav-view animation="slide-left-right">
 
 		</ion-nav-view>
+		<!-- Footer Bar -->
 		<ion-footer-bar align-title="left" class="bar-assertive">
 			<div class="buttons">
 				<div class="buttons" ng-click="addOpp()">
@@ -40,7 +42,7 @@
 		  var favoriteOpps=JSON.parse("{!JSENCODE(favoriteOppsJSON)}");
 		  var currentUserId = "{!JSENCODE(currentUserId)}"
 	  </script>
-
+	  <!-- template for the dashboard view -->
 	  <script type="text/ng-template" id="dashboard.html">
 	  	<ion-view title="Opportunity Dashboard">
         <ion-content>
@@ -74,7 +76,8 @@
 		</ion-content>
 		</ion-view>
 	    </script>
-
+	    
+	    <!-- template for the account view -->
 	    <script type="text/ng-template" id="accounts.html">
 	  	<ion-view title="Accounts">
         <ion-content>
@@ -91,6 +94,7 @@
 		</ion-view>
 	    </script>
 
+	    <!-- Template for opp list -->
 	    <script type="text/ng-template" id="oppslist.html">
 	  	<ion-view title="{{pageTitle}}">
         <ion-content>
